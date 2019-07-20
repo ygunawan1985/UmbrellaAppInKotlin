@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UmbrellaAppInKotlin</string>
+    <string name="search">Search</string>
+    <string name="enter_your_zip_code">Enter Your Zip Code</string>
+    <string name="high_low">High/Low</string>
+    <string name="_5_day_forecast">5 Day Forecast</string>
+</resources>
