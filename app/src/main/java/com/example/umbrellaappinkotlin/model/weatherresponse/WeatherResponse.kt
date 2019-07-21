@@ -52,7 +52,7 @@ class WeatherResponse : Parcelable {
         this.coord = `in`.readValue(Coord::class.java.classLoader) as Coord
         `in`.readList(
             this.weather!!,
-            com.example.umbrellaappinkotlin.model.weatherresponse.Weather::class.java!!.getClassLoader()
+            com.example.umbrellaappinkotlin.model.weatherresponse.Weather::class.java.getClassLoader()
         )
         this.base = `in`.readValue(String::class.java.classLoader) as String
         this.main = `in`.readValue(Main::class.java.classLoader) as Main
@@ -139,18 +139,13 @@ class WeatherResponse : Parcelable {
         return 0
     }
 
-    companion object {
-        @JvmField val CREATOR: Creator<WeatherResponse> = object : Creator<WeatherResponse> {
+    companion object CREATOR : Creator<WeatherResponse> {
+        override fun createFromParcel(parcel: Parcel): WeatherResponse {
+            return WeatherResponse(parcel)
+        }
 
-
-            override fun createFromParcel(`in`: Parcel): WeatherResponse {
-                return WeatherResponse(`in`)
-            }
-
-            override fun newArray(size: Int): Array<WeatherResponse ?> {
-                return arrayOfNulls(size)
-            }
-
+        override fun newArray(size: Int): Array<WeatherResponse?> {
+            return arrayOfNulls(size)
         }
     }
 

@@ -45,18 +45,13 @@ class Wind : Parcelable {
         return 0
     }
 
-    companion object {
-        @JvmField val CREATOR: Creator<Wind> = object : Creator<Wind> {
+    companion object CREATOR : Creator<Wind> {
+        override fun createFromParcel(parcel: Parcel): Wind {
+            return Wind(parcel)
+        }
 
-
-            override fun createFromParcel(`in`: Parcel): Wind {
-                return Wind(`in`)
-            }
-
-            override fun newArray(size: Int): Array<Wind ?> {
-                return arrayOfNulls(size)
-            }
-
+        override fun newArray(size: Int): Array<Wind?> {
+            return arrayOfNulls(size)
         }
     }
 

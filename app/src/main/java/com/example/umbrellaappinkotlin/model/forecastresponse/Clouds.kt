@@ -38,18 +38,13 @@ class Clouds : Parcelable {
         return 0
     }
 
-    companion object {
-        @JvmField val CREATOR: Creator<Clouds> = object : Creator<Clouds> {
+    companion object CREATOR : Creator<Clouds> {
+        override fun createFromParcel(parcel: Parcel): Clouds {
+            return Clouds(parcel)
+        }
 
-
-            override fun createFromParcel(`in`: Parcel): Clouds {
-                return Clouds(`in`)
-            }
-
-            override fun newArray(size: Int): Array<Clouds ?> {
-                return arrayOfNulls(size)
-            }
-
+        override fun newArray(size: Int): Array<Clouds?> {
+            return arrayOfNulls(size)
         }
     }
 

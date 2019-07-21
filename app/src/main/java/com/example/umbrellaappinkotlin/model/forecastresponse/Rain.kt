@@ -13,7 +13,7 @@ class Rain : Parcelable {
     var _3h : Float? = null
 
     protected constructor(`in`: Parcel) {
-        this._3h = (`in`.readValue((Float::class.java!!.getClassLoader())) as Float)
+        this._3h = (`in`.readValue((Float::class.java.getClassLoader())) as Float)
     }
 
     /**
@@ -38,18 +38,13 @@ class Rain : Parcelable {
         return 0
     }
 
-    companion object {
-        @JvmField val CREATOR: Creator<Rain> = object : Creator<Rain> {
+    companion object CREATOR : Creator<Rain> {
+        override fun createFromParcel(parcel: Parcel): Rain {
+            return Rain(parcel)
+        }
 
-
-            override fun createFromParcel(`in`: Parcel): Rain {
-                return Rain(`in`)
-            }
-
-            override fun newArray(size: Int): Array<Rain ?> {
-                return arrayOfNulls(size)
-            }
-
+        override fun newArray(size: Int): Array<Rain?> {
+            return arrayOfNulls(size)
         }
     }
 

@@ -2,7 +2,6 @@ package com.example.umbrellaappinkotlin
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -85,14 +84,6 @@ class CurrentWeather : AppCompatActivity(), Callback {
 
             forecastList.add(Forecast(strDate, weatherDescription, highTemp, lowTemp, weatherIconUrl))
             date = add3HoursToDate(date)
-
-            for (aForecast in forecastList) {
-                Log.d("TAG_FORECAST", aForecast.day)
-                Log.d("TAG_FORECAST", aForecast.weatherDescription)
-                Log.d("TAG_FORECAST", aForecast.highTemp.toString())
-                Log.d("TAG_FORECAST", aForecast.lowTemp.toString())
-                Log.d("TAG_FORECAST", aForecast.weatherIconUrl)
-            }
         }
     }
 

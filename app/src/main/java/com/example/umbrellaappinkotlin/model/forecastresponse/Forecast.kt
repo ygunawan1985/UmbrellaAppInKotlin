@@ -41,16 +41,13 @@ class Forecast : Parcelable {
         parcel.writeString(weatherIconUrl)
     }
 
-    companion object {
+    companion object CREATOR : Parcelable.Creator<Forecast> {
+        override fun createFromParcel(parcel: Parcel): Forecast {
+            return Forecast(parcel)
+        }
 
-        @JvmField val CREATOR: Parcelable.Creator<Forecast> = object : Parcelable.Creator<Forecast> {
-            override fun createFromParcel(`in`: Parcel): Forecast {
-                return Forecast(`in`)
-            }
-
-            override fun newArray(size: Int): Array<Forecast ?> {
-                return arrayOfNulls(size)
-            }
+        override fun newArray(size: Int): Array<Forecast?> {
+            return arrayOfNulls(size)
         }
     }
 }

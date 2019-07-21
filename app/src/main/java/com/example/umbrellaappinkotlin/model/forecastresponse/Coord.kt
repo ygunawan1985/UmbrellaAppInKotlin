@@ -45,18 +45,13 @@ class Coord : Parcelable {
         return 0
     }
 
-    companion object {
-        @JvmField val CREATOR: Creator<Coord> = object : Creator<Coord> {
+    companion object CREATOR : Creator<Coord> {
+        override fun createFromParcel(parcel: Parcel): Coord {
+            return Coord(parcel)
+        }
 
-
-            override fun createFromParcel(`in`: Parcel): Coord {
-                return Coord(`in`)
-            }
-
-            override fun newArray(size: Int): Array<Coord ?> {
-                return arrayOfNulls(size)
-            }
-
+        override fun newArray(size: Int): Array<Coord?> {
+            return arrayOfNulls(size)
         }
     }
 

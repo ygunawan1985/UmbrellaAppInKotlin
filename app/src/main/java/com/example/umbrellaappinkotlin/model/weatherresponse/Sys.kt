@@ -73,18 +73,13 @@ class Sys : Parcelable {
         return 0
     }
 
-    companion object {
-        @JvmField val CREATOR: Creator<Sys> = object : Creator<Sys> {
+    companion object CREATOR : Creator<Sys> {
+        override fun createFromParcel(parcel: Parcel): Sys {
+            return Sys(parcel)
+        }
 
-
-            override fun createFromParcel(`in`: Parcel): Sys {
-                return Sys(`in`)
-            }
-
-            override fun newArray(size: Int): Array<Sys?> {
-                return arrayOfNulls(size)
-            }
-
+        override fun newArray(size: Int): Array<Sys?> {
+            return arrayOfNulls(size)
         }
     }
 

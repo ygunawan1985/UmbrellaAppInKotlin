@@ -30,7 +30,7 @@ class ForecastResponse : Parcelable {
         this.cnt = `in`.readValue(Int::class.java.classLoader) as Int
         `in`.readList(
             this.list!!,
-            com.example.umbrellaappinkotlin.model.forecastresponse.List::class.java!!.getClassLoader()
+            com.example.umbrellaappinkotlin.model.forecastresponse.List::class.java.getClassLoader()
         )
         this.city = `in`.readValue(City::class.java.classLoader) as City
     }
@@ -75,18 +75,13 @@ class ForecastResponse : Parcelable {
         return 0
     }
 
-    companion object {
-        @JvmField val CREATOR: Creator<ForecastResponse> = object : Creator<ForecastResponse> {
+    companion object CREATOR : Creator<ForecastResponse> {
+        override fun createFromParcel(parcel: Parcel): ForecastResponse {
+            return ForecastResponse(parcel)
+        }
 
-
-            override fun createFromParcel(`in`: Parcel): ForecastResponse {
-                return ForecastResponse(`in`)
-            }
-
-            override fun newArray(size: Int): Array<ForecastResponse ?> {
-                return arrayOfNulls(size)
-            }
-
+        override fun newArray(size: Int): Array<ForecastResponse?> {
+            return arrayOfNulls(size)
         }
     }
 
